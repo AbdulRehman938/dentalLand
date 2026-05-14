@@ -3,6 +3,7 @@ import Footer from '../components/common/Footer'
 import Hero from '../components/home/Hero'
 import About from '../components/home/About'
 import Treatments from '../components/home/Treatments'
+import Quote from '../components/home/Quote'
 import Services from '../components/home/Services'
 import StackingSection from '../components/common/StackingSection'
 import { motion } from 'framer-motion'
@@ -23,6 +24,10 @@ const Home = () => {
 
         <StackingSection index={3}>
           <Treatments />
+        </StackingSection>
+        
+        <StackingSection index={4}>
+          <Quote />
         </StackingSection>
         
         {/* Spacer / Stats Section */}
