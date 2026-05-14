@@ -7,7 +7,6 @@ import Quote from '../components/home/Quote'
 import Team from '../components/home/Team'
 import CaseStudies from '../components/home/caseStudies'
 import StackingSection from '../components/common/StackingSection'
-import { motion } from 'framer-motion'
 
 const Home = () => {
   return (
