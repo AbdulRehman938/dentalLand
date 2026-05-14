@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { HiArrowUpRight } from "react-icons/hi2";
 import { PiSparkle, PiSmiley, PiHandshake, PiMapPinPlus } from "react-icons/pi";

@@ -183,7 +183,7 @@ const Header = () => {
 
               {/* Navigation Links */}
               <div className="flex flex-col">
-                {navLinks.map((link, index) => (
+                {navLinks.map((link) => (
                   <a
                     key={link.name}
                     href={link.href}

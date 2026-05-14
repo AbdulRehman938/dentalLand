@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import { HiArrowUpRight, HiStar } from 'react-icons/hi2'
 import Button from '../common/Button'
