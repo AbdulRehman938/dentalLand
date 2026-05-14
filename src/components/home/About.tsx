@@ -116,7 +116,7 @@ const About = () => {
         {/* Child Section: BOTTOM (Features Grid) */}
         <div className="w-full bg-white rounded-[24px] py-12 pt-0 md:py-10 px-1 md:px-2 lg:px-20 grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 items-end">
           {/* Column 1: About Button */}
-          <div className="flex flex-col items-start pb-2">
+          <div className="flex flex-col items-start pb-2 mt-8 md:mt-0">
             <Button
               variant="secondary"
               className="w-fit !px-6 !py-4 md:!px-8 md:!py-5"
@@ -191,7 +191,7 @@ const About = () => {
             {/* Action Button */}
             <motion.button
               whileHover={{ rotate: 45, scale: 1.1 }}
-              className="w-12 h-12 md:w-14 md:h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 transition-colors hover:bg-white/20"
+              className="w-12 h-12 md:w-14 md:h-14 left-3 md:left-0 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 transition-colors hover:bg-white/20"
             >
               <HiArrowUpRight className="text-xl md:text-2xl text-white" />
             </motion.button>

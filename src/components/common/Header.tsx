@@ -117,12 +117,12 @@ const Header = () => {
             className="lg:hidden flex flex-col gap-[10px] p-4"
           >
             <motion.div
-              animate={isMenuOpen ? { rotate: 45, y: 9 } : { rotate: 0, y: 0 }}
+              animate={isMenuOpen ? { rotate: 45, y: 6.5 } : { rotate: 0, y: 0 }}
               style={{ backgroundColor: "#000000" }}
               className="w-8 h-[3px] rounded-full"
             />
             <motion.div
-              animate={isMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 0 }}
+              animate={isMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
               style={{ backgroundColor: "#000000" }}
               className="w-8 h-[3px] rounded-full"
             />
