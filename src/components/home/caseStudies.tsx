@@ -119,7 +119,7 @@ const CaseStudies = () => {
           {/* Pill Label */}
           <div className="flex items-center gap-2.5 bg-gray-50/80 border border-gray-100 px-5 py-2 rounded-full mb-6">
             <div className="w-2 h-2 rounded-full bg-[#5B7A12]"></div>
-            <span className="text-[14px] font-medium text-gray-500 tracking-wide">
+            <span className="text-[20px] font-semibold md:text-[14px] text-gray-500 tracking-wide">
               Case Studies
             </span>
           </div>
@@ -133,7 +133,7 @@ const CaseStudies = () => {
         </div>
 
         {/* 3 Bottom Cards */}
-        <div className="mt-auto pt-6 w-full max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        <div className="mt-auto pt-6 w-full max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-20 md:gap-12">
           {caseStudiesData.map((study, index) => (
             <div key={index} className="flex flex-col gap-6 group">
               <BeforeAfterSlider
@@ -172,9 +172,9 @@ const CaseStudies = () => {
         </div>
 
         {/* Right Card: Green Promo & Rating */}
-        <div className="relative w-full lg:w-[68%] h-[350px] md:h-[400px] bg-[#5B7A12] rounded-[32px] p-8 md:p-14 flex flex-col justify-between overflow-hidden">
+        <div className="relative w-full lg:w-[68%] h-[400px] md:h-[400px] bg-[#5B7A12] rounded-[32px] p-8 md:p-14 flex flex-col justify-between overflow-hidden">
           {/* Main Heading */}
-          <h3 className="text-3xl md:text-5xl lg:text-[56px] font-medium text-white leading-[1.1] tracking-tight max-w-[700px]">
+          <h3 className="text-4xl md:text-5xl lg:text-[56px] font-medium text-white leading-[1.1] tracking-tight max-w-[700px]">
             We'll give you a reason to smile more. Sign up today.
           </h3>
 

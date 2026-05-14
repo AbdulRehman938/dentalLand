@@ -114,12 +114,12 @@ const Team = () => {
           {/* Pill Label */}
           <div className="flex items-center gap-2.5 bg-gray-50/80 border border-gray-100 px-5 py-2 rounded-full mb-6">
             <div className="w-2 h-2 rounded-full bg-[#5B7A12]"></div>
-            <span className="text-[14px] font-medium text-gray-500 tracking-wide">
+            <span className="text-[20px] font-semibold md:text-[14px] text-gray-500 tracking-wide">
               Our Team
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-[52px] font-medium text-brand-black tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-[52px] font-bold text-brand-black tracking-tight">
             Meet Our Dental Experts
           </h2>
         </div>
@@ -200,6 +200,7 @@ const Team = () => {
             icon={<HiArrowUpRight className="text-lg" />}
             variant="primary"
             showWave={true}
+            className="py-4 md:py-0"
           >
             Our Specialists
           </Button>

@@ -63,7 +63,7 @@ const TreatmentCard = ({ item, index }: { item: any; index: number }) => {
         x,
         y,
       }}
-      className="relative md:sticky md:top-[90px] w-full bg-white rounded-[24px] md:rounded-[32px] p-3 shadow-[0_4px_20px_rgba(0,0,0,0.03)] md:shadow-[0_10px_50px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-row items-start md:items-center gap-4 md:gap-6 group hover:border-brand-secondary/20 transition-all duration-300 cursor-pointer"
+      className="relative md:sticky md:top-[90px] w-full bg-white rounded-[24px] md:rounded-[32px] p-3 shadow-[0_4px_20px_rgba(0,0,0,0.06)] md:shadow-[0_10px_50px_rgba(0,0,0,0.08)] border border-gray-100 flex flex-row items-start md:items-center gap-4 md:gap-6 group hover:border-brand-secondary/20 transition-all duration-300 cursor-pointer"
     >
       {/* Icon */}
       <div className="w-14 h-14 md:w-24 md:h-24 shrink-0 flex items-center justify-center rounded-2xl">
@@ -111,7 +111,7 @@ const Treatments = () => {
       className="relative w-full p-4 pt-4 z-10"
     >
       {/* Outer Container */}
-      <div className="relative w-full max-w-[1720px] mx-auto rounded-[32px] bg-white flex flex-col lg:flex-row lg:gap-12 md:gap-5 p-4 md:p-6 lg:p-10">
+      <div className="relative w-full max-w-[1720px] mx-auto rounded-[32px] bg-white flex flex-col lg:flex-row lg:gap-12 md:gap-5 px-4 py-12 md:p-6 lg:p-10 shadow-[0_-10px_40px_rgba(0,0,0,0.02)]">
         {/* Left Side: CSS sticky (works now that overflow-x:clip is set on root) */}
         <div className="hidden lg:block w-1/3 shrink-0">
           <div className="flex flex-col items-start sticky top-52">
@@ -128,7 +128,7 @@ const Treatments = () => {
             </div>
 
             <div className="mb-10">
-              <h2 className="text-[46px] font-black text-brand-black leading-[1.1] tracking-tight">
+              <h2 className="text-[60px] md:text-[46px] font-black text-brand-black leading-[1.1] tracking-tight">
                 {"Expert Dental Treatments".split(" ").map((word, i) => (
                   <span key={i} className="inline-block whitespace-nowrap mr-3">
                     {word.split("").map((char, j) => (
@@ -164,7 +164,10 @@ const Treatments = () => {
 
         {/* Mobile: Left content inline */}
         <div className="lg:hidden w-full flex flex-col items-start">
-          <div className="flex items-center gap-2 mb-6">
+          <h2 className="text-3xl md:text-4xl font-black text-brand-black leading-[1.1] tracking-tight mb-4">
+            Expert Dental Treatments
+          </h2>
+          <div className="flex items-center gap-2 mb-8">
             <div className="flex text-brand-secondary gap-1">
               {[...Array(5)].map((_, i) => (
                 <HiStar key={i} className="text-[18px]" />
@@ -174,9 +177,6 @@ const Treatments = () => {
               4.8 (68 Reviews)
             </p>
           </div>
-          <h2 className="text-3xl md:text-4xl font-black text-brand-black leading-[1.1] tracking-tight mb-8">
-            Expert Dental Treatments
-          </h2>
           <Button
             variant="secondary"
             className="!px-8 !py-4 rounded-full text-sm font-bold mb-10"

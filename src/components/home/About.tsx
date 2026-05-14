@@ -66,11 +66,11 @@ const About = () => {
       className="relative w-full px-2 pb-4 pt-4 z-10"
     >
       {/* Outer Black Container */}
-      <div className="relative w-full max-w-[1720px] mx-auto rounded-[32px] bg-brand-white overflow-hidden flex flex-col gap-4 p-4">
+      <div className="relative w-full max-w-[1720px] mx-auto rounded-[32px] bg-brand-white overflow-hidden flex flex-col gap-1 md:gap-4 p-4">
         {/* Child Section: TOP (White Card) */}
-        <div className="w-full bg-white rounded-[24px] py-8 md:py-14 px-1 md:px-2 lg:px-20 flex flex-col lg:flex-row items-start gap-10 md:gap-7 lg:gap-32">
+        <div className="w-full bg-white rounded-[24px] pt-8 pb-0 md:py-14 px-1 md:px-2 lg:px-20 flex flex-col lg:flex-row items-start gap-4 md:gap-7 lg:gap-32">
           {/* Left Side: Experience & Avatars */}
-          <div className="flex flex-row lg:flex-col items-center lg:items-start gap-6 md:gap-8 lg:gap-4 shrink-0 w-full lg:w-auto mb-8 lg:mb-0">
+          <div className="flex flex-row lg:flex-col items-center lg:items-start gap-6 md:gap-8 lg:gap-4 shrink-0 w-full lg:w-auto mb-0 lg:mb-0">
             {/* Overlapping Avatars (Vertical Pill Boxes) */}
             <div className="flex -space-x-3 md:-space-x-4">
               {doctors.map((url, i) => (
@@ -158,10 +158,10 @@ const About = () => {
           {/* Bottom Overlay Info */}
           <div className="absolute inset-x-0 bottom-0 p-6 md:p-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-between gap-6">
             <div className="flex flex-col gap-1">
-              <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+              <h3 className="text-3xl md:text-3xl font-bold text-white tracking-tight">
                 Visit Our Clinic
               </h3>
-              <p className="text-white/80 text-sm md:text-base font-medium">
+              <p className="text-white/80 text-base md:text-base font-medium">
                 Building 15, Dubai Internet City, Sheikh Zayed Road, Dubai,
                 United Arab Emirates
               </p>
@@ -180,7 +180,7 @@ const About = () => {
         <div className="relative w-full lg:w-[45%] h-[45vh] md:h-[70vh] lg:h-[60vh] bg-brand-secondary rounded-[32px] overflow-hidden p-8 md:p-10 flex flex-col justify-between">
           {/* Top Row: Gift Icon & CTA */}
           <div className="flex justify-between items-start">
-            <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+            <div className="w-16 h-16 mt-[-.5rem] md:w-16 md:h-16 flex items-center justify-center">
               <img
                 src="/gift.png"
                 alt="Free Gift"
@@ -199,10 +199,10 @@ const About = () => {
 
           {/* Bottom Content: Promo Text */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-2xl md:text-[30px] font-bold text-white leading-[1.1] tracking-tight max-w-[320px]">
+            <h3 className="text-3xl md:text-[30px] font-bold text-white leading-[1.1] tracking-tight max-w-[320px]">
               Your first consultation is free of charge
             </h3>
-            <p className="text-white/80 text-sm md:text-base font-medium max-w-[340px] leading-relaxed">
+            <p className="text-white/80 text-base md:text-[17px] font-medium max-w-[340px] leading-relaxed">
               Book a consultation today. We'd love to give you a reason to smile
               more ;)
             </p>
