@@ -2,13 +2,14 @@ import Header from '../components/common/Header'
 import Footer from '../components/common/Footer'
 import Hero from '../components/home/Hero'
 import About from '../components/home/About'
+import Treatments from '../components/home/Treatments'
 import Services from '../components/home/Services'
 import StackingSection from '../components/common/StackingSection'
 import { motion } from 'framer-motion'
 
 const Home = () => {
   return (
-    <div className="flex flex-col w-full bg-brand-bg overflow-x-hidden">
+    <div className="flex flex-col w-full bg-brand-bg [overflow-x:clip]">
       <Header />
       
       <main className="flex-grow">
@@ -18,6 +19,10 @@ const Home = () => {
         
         <StackingSection index={2}>
           <About />
+        </StackingSection>
+
+        <StackingSection index={3}>
+          <Treatments />
         </StackingSection>
         
         {/* Spacer / Stats Section */}

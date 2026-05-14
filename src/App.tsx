@@ -5,6 +5,7 @@ import Lenis from 'lenis'
 
 gsap.registerPlugin(ScrollTrigger)
 
+import { Analytics } from "@vercel/analytics/react"
 import Home from './screens/Home'
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
       <div className="max-w-[1720px] mx-auto relative bg-transparent">
         <Home />
       </div>
+      <Analytics />
     </div>
   )
 }
