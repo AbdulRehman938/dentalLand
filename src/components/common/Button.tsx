@@ -24,22 +24,22 @@ const Button: React.FC<ButtonProps> = ({
       initial="initial"
       whileHover="hover"
       onClick={onClick}
-      style={{ backgroundColor: variant === 'primary' ? '#5B7A12' : 'transparent' }}
-      className={`relative overflow-hidden px-6 py-1.5 rounded-full flex items-center justify-between gap-3 font-bold text-base transition-all duration-500 border border-transparent group shadow-md shadow-black/10 ${className}`}
+      style={{ backgroundColor: variant === 'primary' ? '#5B7A12' : (variant === 'secondary' ? '#FFFFFF' : 'transparent') }}
+      className={`relative overflow-hidden px-6 py-1.5 rounded-full flex items-center justify-between gap-3 font-bold text-base transition-all duration-500 border group shadow-md shadow-black/10 ${className}`}
       variants={{
-        initial: { borderColor: "transparent" },
-        hover: { borderColor: variant === 'primary' ? "#5B7A12" : "transparent" }
+        initial: { borderColor: variant === 'secondary' ? "#E5E7EB" : "transparent" },
+        hover: { borderColor: variant === 'primary' ? "#5B7A12" : (variant === 'secondary' ? "#5B7A12" : "transparent") }
       }}
     >
       {/* Water Wave Effect */}
-      {showWave && variant === 'primary' && (
+      {showWave && (variant === 'primary' || variant === 'secondary') && (
         <motion.div
           variants={{
             initial: { y: "170%" },
             hover: { y: "0%" }
           }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          style={{ backgroundColor: '#FFFFFF' }}
+          style={{ backgroundColor: variant === 'primary' ? '#FFFFFF' : '#5B7A12' }}
           className="absolute inset-0 z-0"
         >
           <svg 
@@ -49,7 +49,7 @@ const Button: React.FC<ButtonProps> = ({
           >
             <path 
               d="M0,50 C150,100 350,0 500,50 C650,100 850,0 1000,50 L1000,100 L0,100 Z" 
-              fill="#FFFFFF"
+              fill={variant === 'primary' ? '#FFFFFF' : '#5B7A12'}
             />
           </svg>
         </motion.div>
@@ -58,8 +58,8 @@ const Button: React.FC<ButtonProps> = ({
       {/* Content */}
       <motion.span
         variants={{
-          initial: { color: variant === 'primary' ? "#FFFFFF" : "inherit" },
-          hover: { color: variant === 'primary' ? "#5B7A12" : "inherit" }
+          initial: { color: variant === 'primary' ? "#FFFFFF" : "#000000" },
+          hover: { color: variant === 'primary' ? "#5B7A12" : "#FFFFFF" }
         }}
         transition={{ duration: 0.3 }}
         className="relative z-10"
@@ -71,10 +71,10 @@ const Button: React.FC<ButtonProps> = ({
         <motion.div 
           variants={{
             initial: { 
-              color: variant === 'primary' ? "#FFFFFF" : "inherit" 
+              color: variant === 'primary' ? "#FFFFFF" : "#000000" 
             },
             hover: { 
-              color: variant === 'primary' ? "#5B7A12" : "inherit" 
+              color: variant === 'primary' ? "#5B7A12" : "#FFFFFF" 
             }
           }}
           transition={{ duration: 0.3 }}

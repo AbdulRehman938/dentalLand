@@ -2,7 +2,9 @@ import React from 'react'
 import Header from '../components/common/Header'
 import Footer from '../components/common/Footer'
 import Hero from '../components/home/Hero'
+import About from '../components/home/About'
 import Services from '../components/home/Services'
+import StackingSection from '../components/common/StackingSection'
 import { motion } from 'framer-motion'
 
 const Home = () => {
@@ -11,7 +13,13 @@ const Home = () => {
       <Header />
       
       <main className="flex-grow">
-        <Hero />
+        <StackingSection index={1}>
+          <Hero />
+        </StackingSection>
+        
+        <StackingSection index={2}>
+          <About />
+        </StackingSection>
         
         {/* Spacer / Stats Section */}
         <section className="py-24 bg-brand-secondary text-brand-white overflow-hidden relative">

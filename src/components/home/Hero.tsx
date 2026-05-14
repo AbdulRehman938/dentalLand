@@ -25,7 +25,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/30" />
 
         {/* Content Container - Left Aligned */}
-        <div className="absolute inset-0 flex flex-col justify-between lg:justify-center items-start lg:gap-12 py-8 lg:py-0 px-6 md:px-16 lg:px-20 z-10 max-w-4xl h-full">
+        <div className="absolute inset-0 flex flex-col justify-between lg:justify-center items-start lg:gap-12 py-8 lg:py-0 px-6 md:px-6 lg:px-20 z-10 max-w-4xl h-full">
           <div className="flex flex-col items-start">
             <motion.h1 
               initial={{ opacity: 0, x: -30 }}
