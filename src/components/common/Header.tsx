@@ -54,7 +54,7 @@ const Header = () => {
         }}
         animate={isHidden ? "hidden" : "visible"}
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-0 inset-x-0 mx-auto w-full max-w-[1720px] z-50 px-2 py-4"
+        className="fixed top-0 inset-x-0 mx-auto w-full max-w-[1720px] z-[999] px-2 py-4"
       >
         <nav className="flex items-center justify-between bg-white rounded-2xl lg:px-0 pl-3 lg:px-5 md:pl-10 md:pr-2.5 py-3 shadow-[0_10px_20px_rgb(0,0,0,0.09)] border border-gray-100">
           {/* Logo */}
