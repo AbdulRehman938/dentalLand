@@ -97,13 +97,24 @@ const TreatmentCard = ({ item, index }: { item: any; index: number }) => {
 };
 
 const Treatments = () => {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 0.9", "start 0.1"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [0, -180]);
+
   return (
-    <section className="relative w-full p-4">
+    <motion.section
+      ref={containerRef}
+      style={{ y, marginBottom: y }}
+      className="relative w-full p-4 pt-4 z-10"
+    >
       {/* Outer Container */}
-      <div className="relative w-full max-w-[1720px] mx-auto rounded-[32px] bg-white flex flex-col lg:flex-row lg:gap-12 md:gap-5 p-8 md:p-10 lg:p-24">
+      <div className="relative w-full max-w-[1720px] mx-auto rounded-[32px] bg-white flex flex-col lg:flex-row lg:gap-12 md:gap-5 p-4 md:p-6 lg:p-10">
         {/* Left Side: CSS sticky (works now that overflow-x:clip is set on root) */}
         <div className="hidden lg:block w-1/3 shrink-0">
-          <div className="flex flex-col items-start sticky top-10">
+          <div className="flex flex-col items-start sticky top-52">
             {/* Rating */}
             <div className="flex items-center gap-2 mb-8">
               <div className="flex text-brand-secondary gap-1">
@@ -181,7 +192,7 @@ const Treatments = () => {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

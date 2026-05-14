@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { HiArrowUpRight } from "react-icons/hi2";
 import { PiSparkle, PiSmiley, PiHandshake, PiMapPinPlus } from "react-icons/pi";
 import Button from "../common/Button";
@@ -49,14 +49,22 @@ const FeatureItem = ({
 
 const About = () => {
   const doctors = [
-    "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=200&auto=format&fit=crop",
+    "/experts/Dr. David Kim.png",
+    "/experts/Dr. Sarah Jenkins.png",
+    "/experts/Dr. Michael Reynolds.png",
+    "/experts/Arabic.png",
   ];
 
+  // We use scrollY to get the absolute scroll position of the window
+  const { scrollY } = useScroll();
+  // We increase the movement to -250px so it closes the gap and overrides the hero section significantly
+  const y = useTransform(scrollY, [0, 1000], [0, -180]);
+
   return (
-    <section className="relative w-full min-h-screen px-2 pb-4">
+    <motion.section
+      style={{ y, marginBottom: y }}
+      className="relative w-full px-2 pb-4 pt-4 z-10"
+    >
       {/* Outer Black Container */}
       <div className="relative w-full max-w-[1720px] mx-auto rounded-[32px] bg-brand-white overflow-hidden flex flex-col gap-4 p-4">
         {/* Child Section: TOP (White Card) */}
@@ -135,68 +143,73 @@ const About = () => {
             description="Clear pricing, honest timelines, and no surprises from first scan to final restoration."
           />
         </div>
-
       </div>
-      
-        <div className="w-full flex flex-col lg:flex-row justify-between gap-4 my-5">
-          {/* Left Container: Clinic Exterior & Visit Info */}
-          <div className="relative w-full lg:w-[55%] h-[45vh] md:h-[70vh] lg:h-[60vh] rounded-[32px] overflow-hidden group">
-            {/* Background Image */}
-            <img 
-              src="/clinic-exterior.png" 
-              alt="Dental Land Clinic Exterior" 
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            
-            {/* Bottom Overlay Info */}
-            <div className="absolute inset-x-0 bottom-0 p-6 md:p-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-between gap-6">
-              <div className="flex flex-col gap-1">
-                <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Visit Our Clinic</h3>
-                <p className="text-white/80 text-sm md:text-base font-medium">Building 15, Dubai Internet City, Sheikh Zayed Road, Dubai, United Arab Emirates</p>
-              </div>
-              
-              {/* Map Pin Button */}
-              <motion.button 
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center shadow-lg transition-colors hover:bg-brand-bg shrink-0"
-              >
-                <PiMapPinPlus className="w-6 h-6 md:w-8 md:h-8 text-brand-secondary" />
-              </motion.button>
-            </div>
-          </div>
-          <div className="relative w-full lg:w-[45%] h-[45vh] md:h-[70vh] lg:h-[60vh] bg-brand-secondary rounded-[32px] overflow-hidden p-8 md:p-10 flex flex-col justify-between">
-            {/* Top Row: Gift Icon & CTA */}
-            <div className="flex justify-between items-start">
-              <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
-                <img 
-                  src="/gift.png" 
-                  alt="Free Gift" 
-                  className="w-full h-full object-contain filter drop-shadow-xl"
-                />
-              </div>
-              
-              {/* Action Button */}
-              <motion.button 
-                whileHover={{ rotate: 45, scale: 1.1 }}
-                className="w-12 h-12 md:w-14 md:h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 transition-colors hover:bg-white/20"
-              >
-                <HiArrowUpRight className="text-xl md:text-2xl text-white" />
-              </motion.button>
-            </div>
 
-            {/* Bottom Content: Promo Text */}
-            <div className="flex flex-col gap-4">
-              <h3 className="text-2xl md:text-[30px] font-bold text-white leading-[1.1] tracking-tight max-w-[320px]">
-                Your first consultation is free of charge
+      <div className="w-full flex flex-col lg:flex-row justify-between gap-4 my-5">
+        {/* Left Container: Clinic Exterior & Visit Info */}
+        <div className="relative w-full lg:w-[55%] h-[45vh] md:h-[70vh] lg:h-[60vh] rounded-[32px] overflow-hidden group">
+          {/* Background Image */}
+          <img
+            src="/clinic-exterior.png"
+            alt="Dental Land Clinic Exterior"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+
+          {/* Bottom Overlay Info */}
+          <div className="absolute inset-x-0 bottom-0 p-6 md:p-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-between gap-6">
+            <div className="flex flex-col gap-1">
+              <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                Visit Our Clinic
               </h3>
-              <p className="text-white/80 text-sm md:text-base font-medium max-w-[340px] leading-relaxed">
-                Book a consultation today. We'd love to give you a reason to smile more ;)
+              <p className="text-white/80 text-sm md:text-base font-medium">
+                Building 15, Dubai Internet City, Sheikh Zayed Road, Dubai,
+                United Arab Emirates
               </p>
             </div>
+
+            {/* Map Pin Button */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center shadow-lg transition-colors hover:bg-brand-bg shrink-0"
+            >
+              <PiMapPinPlus className="w-6 h-6 md:w-8 md:h-8 text-brand-secondary" />
+            </motion.button>
           </div>
         </div>
-    </section>
+        <div className="relative w-full lg:w-[45%] h-[45vh] md:h-[70vh] lg:h-[60vh] bg-brand-secondary rounded-[32px] overflow-hidden p-8 md:p-10 flex flex-col justify-between">
+          {/* Top Row: Gift Icon & CTA */}
+          <div className="flex justify-between items-start">
+            <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+              <img
+                src="/gift.png"
+                alt="Free Gift"
+                className="w-full h-full object-contain filter drop-shadow-xl"
+              />
+            </div>
+
+            {/* Action Button */}
+            <motion.button
+              whileHover={{ rotate: 45, scale: 1.1 }}
+              className="w-12 h-12 md:w-14 md:h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 transition-colors hover:bg-white/20"
+            >
+              <HiArrowUpRight className="text-xl md:text-2xl text-white" />
+            </motion.button>
+          </div>
+
+          {/* Bottom Content: Promo Text */}
+          <div className="flex flex-col gap-4">
+            <h3 className="text-2xl md:text-[30px] font-bold text-white leading-[1.1] tracking-tight max-w-[320px]">
+              Your first consultation is free of charge
+            </h3>
+            <p className="text-white/80 text-sm md:text-base font-medium max-w-[340px] leading-relaxed">
+              Book a consultation today. We'd love to give you a reason to smile
+              more ;)
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.section>
   );
 };
 

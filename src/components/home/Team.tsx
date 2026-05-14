@@ -1,6 +1,29 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { HiArrowLeft, HiArrowRight, HiArrowUpRight } from "react-icons/hi2";
+import { PiHandshakeLight, PiLeafLight, PiWavesLight } from "react-icons/pi";
+import Button from "../common/Button";
+
+const promiseCards = [
+  {
+    title: "Clear Plans, Clear Costs",
+    description:
+      "Clear recommendations, transparent pricing, and options you can choose with confidence.",
+    icon: PiHandshakeLight,
+  },
+  {
+    title: "Gentle, Anxiety-Free Care",
+    description:
+      "Calm appointments, patient pacing, and comfort-first techniques from start to finish.",
+    icon: PiLeafLight,
+  },
+  {
+    title: "Premium Safe Materials",
+    description:
+      "Top tier ceramics and composites chosen for biocompatibility, comfort, and natural results.",
+    icon: PiWavesLight,
+  },
+];
 
 const teamData = [
   {
@@ -9,36 +32,43 @@ const teamData = [
     image: "/experts/Arabic.png",
   },
   {
-      name: "Dr. Emily Carter",
-      role: "Prosthodontist | Aesthetic Lead",
-      image: "/experts/Dr. Emily Carter.png",
-    },
-    {
-        name: "Dr. James Wilson",
-        role: "Orthodontist",
-        image: "/experts/Dr. James Wilson.png",
-    },
-    {
-        name: "Dr. Sarah Jenkins",
-        role: "Pediatric Dentist",
-        image: "/experts/Dr. Sarah Jenkins.png",
-    },
-    {
-        name: "Dr. David Kim",
-        role: "Endodontist",
-        image: "/experts/Dr. David Kim.png",
-    },
-    {
-      name: "Dr. Michael Reynolds",
-      role: "Implantologist",
-      image: "/experts/Dr. Michael Reynolds.png",
-    },
+    name: "Dr. Emily Carter",
+    role: "Prosthodontist | Aesthetic Lead",
+    image: "/experts/Dr. Emily Carter.png",
+  },
+  {
+    name: "Dr. James Wilson",
+    role: "Orthodontist",
+    image: "/experts/Dr. James Wilson.png",
+  },
+  {
+    name: "Dr. Sarah Jenkins",
+    role: "Pediatric Dentist",
+    image: "/experts/Dr. Sarah Jenkins.png",
+  },
+  {
+    name: "Dr. David Kim",
+    role: "Endodontist",
+    image: "/experts/Dr. David Kim.png",
+  },
+  {
+    name: "Dr. Michael Reynolds",
+    role: "Implantologist",
+    image: "/experts/Dr. Michael Reynolds.png",
+  },
 ];
 
 const Team = () => {
+  const containerRef = useRef<HTMLElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 0.9", "start 0.1"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [0, -180]);
 
   const checkScroll = () => {
     if (carouselRef.current) {
@@ -67,13 +97,17 @@ const Team = () => {
   };
 
   return (
-    <section className="relative w-full p-4 -mt-24">
+    <motion.section
+      ref={containerRef}
+      style={{ y, marginBottom: y }}
+      className="relative w-full p-4 pt-4 z-10"
+    >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, margin: "0px 0px -100px 0px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="w-full min-h-[80vh] bg-white rounded-[32px] flex flex-col items-center pt-24 pb-20 px-6 md:px-12 lg:px-20 shadow-[0_10px_50px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden"
+        className="w-full min-h-[80vh] bg-white rounded-[32px] flex flex-col items-center pt-14 pb-12 px-6 md:px-12 lg:px-20 shadow-[0_10px_50px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden"
       >
         {/* Header Section */}
         <div className="flex flex-col items-center justify-center mb-16 w-full text-center">
@@ -162,12 +196,60 @@ const Team = () => {
             feel rushed here. We explain options clearly, plan carefully, and
             deliver treatment with steady hands and modern tools.
           </p>
-          <button className="bg-[#5B7A12] text-white px-7 py-3.5 rounded-full text-[15px] font-bold flex items-center gap-2 hover:bg-[#4a630f] transition-all hover:scale-105 shadow-lg shadow-[#5B7A12]/20">
-            Our Specialists <HiArrowUpRight className="text-lg" />
-          </button>
+          <Button
+            icon={<HiArrowUpRight className="text-lg" />}
+            variant="primary"
+            showWave={true}
+          >
+            Our Specialists
+          </Button>
         </div>
       </motion.div>
-    </section>
+
+      {/* Promise Cards (Outside the section container) */}
+      <div className="w-full max-w-[1720px] mx-auto mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6 px-4 md:px-0">
+        {promiseCards.map((card, i) => {
+          const Icon = card.icon;
+          return (
+            <div
+              key={i}
+              className="bg-white rounded-[32px] border border-gray-100 p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.03)]"
+            >
+              <div className="flex flex-row lg:flex-col items-start gap-6">
+                <div
+                  style={{
+                    background:
+                      "linear-gradient(180deg, #F0F5E4 0%, rgba(255, 255, 255, 0.1) 100%)",
+                    borderRadius: "32px",
+                    boxShadow: "rgba(91, 122, 18, 0.1) 0px 1px 2px 0px inset",
+                  }}
+                  className="w-16 h-16 md:w-16 md:h-16 shrink-0 flex items-center justify-center p-2"
+                >
+                  <div
+                    style={{
+                      backgroundColor: "#F0F5E4",
+                      boxShadow: "rgba(91, 122, 18, 0.15) 0px 2px 2px 0px",
+                    }}
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-[20px] border-[3px] border-white flex items-center justify-center"
+                  >
+                    <Icon className="text-[24px] md:text-[28px] text-[#5B7A12]" />
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[21px] font-bold text-brand-black leading-tight pt-1 md:pt-0">
+                    {card.title}
+                  </h3>
+                  <p className="text-gray-500 font-medium text-[15px] leading-relaxed max-w-[280px]">
+                    {card.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </motion.section>
   );
 };
 

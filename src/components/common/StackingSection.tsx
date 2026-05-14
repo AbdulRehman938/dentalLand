@@ -14,7 +14,7 @@ const StackingSection: React.FC<StackingSectionProps> = ({
       className="relative w-full"
       style={{
         zIndex: index * 10,
-        marginTop: index > 1 ? "80px" : "0",
+        marginTop: index > 1 ? "64px" : "0",
       }}
     >
       {children}
