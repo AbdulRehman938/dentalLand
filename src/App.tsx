@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div className="selection:bg-brand-secondary selection:text-brand-white bg-brand-bg min-h-screen">
-      <div className="max-w-[1720px] mx-auto relative shadow-2xl bg-brand-bg">
+      <div className="max-w-[1720px] mx-auto relative bg-transparent">
         <Home />
       </div>
     </div>

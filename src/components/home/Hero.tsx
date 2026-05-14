@@ -1,66 +1,101 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { HiArrowUpRight, HiStar } from 'react-icons/hi2'
+import Button from '../common/Button'
 
 const Hero = () => {
+  const avatars = [
+    "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=100&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=100&auto=format&fit=crop"
+  ];
+
   return (
-    <section className="min-h-screen pt-32 pb-20 px-6 flex flex-col items-center justify-center relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-secondary/5 rounded-full blur-[120px] -z-0" />
-      
-      <div className="text-center relative z-10 px-6">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 bg-brand-secondary/10 text-brand-secondary px-4 py-1.5 rounded-full text-sm font-bold mb-8"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-secondary opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-secondary"></span>
-          </span>
-          Award Winning Clinic
-        </motion.div>
+    <section className="relative w-full h-screen pt-28 pb-4 px-2">
+      {/* Main Image/Hero Container */}
+      <div className="relative w-full h-full max-w-[1720px] mx-auto rounded-[32px] overflow-hidden bg-black shadow-2xl">
+        <img 
+          src="/hero-image.png" 
+          alt="Premium Dental Clinic" 
+          className="w-full h-full object-cover"
+        />
+        
+        {/* Dark Overlay for Readability */}
+        <div className="absolute inset-0 bg-black/30" />
 
-        <motion.h1 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-8xl font-black text-brand-black mb-8 leading-[1.1] tracking-tight"
-        >
-          Where Technology <br /> 
-          <span className="text-brand-secondary italic font-serif">Meets Care.</span>
-        </motion.h1>
+        {/* Content Container - Left Aligned */}
+        <div className="absolute inset-0 flex flex-col justify-between lg:justify-center items-start lg:gap-12 py-8 lg:py-0 px-6 md:px-16 lg:px-20 z-10 max-w-4xl h-full">
+          <div className="flex flex-col items-start">
+            <motion.h1 
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="text-[32px] md:text-[52px] lg:text-[85px] font-bold text-white leading-[1.1] md:leading-[1] lg:leading-[0.95] tracking-[-0.04em] mb-3 md:mb-4"
+            >
+              Premium Implant <br /> 
+              Dentistry Clinic
+            </motion.h1>
 
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-xl md:text-2xl text-brand-black/70 max-w-3xl mx-auto mb-12 leading-relaxed"
-        >
-          Experience dental excellence with our state-of-the-art facilities and a team 
-          dedicated to your perfect smile.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-lg mx-auto"
-        >
-          <button className="w-full sm:w-auto bg-brand-secondary text-brand-white px-10 py-4 rounded-2xl text-lg font-bold shadow-2xl shadow-brand-secondary/30 hover:scale-[1.02] active:scale-[0.98] transition-all">
-            Book Appointment
-          </button>
-          <button className="w-full sm:w-auto bg-brand-white text-brand-black border border-gray-200 px-10 py-4 rounded-2xl text-lg font-bold hover:bg-gray-50 transition-all">
-            View Our Cases
-          </button>
-        </motion.div>
-      </div>
-
-      <div className="mt-20 w-full h-[400px] md:h-[600px] bg-gray-200 rounded-[3rem] overflow-hidden shadow-2xl relative px-6">
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-          <div className="w-full h-full bg-brand-secondary/5 flex items-center justify-center text-brand-secondary/20 font-black text-9xl">
-            PREMIUM CARE
+            <motion.p 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-sm md:text-base lg:text-[18px] text-white/90 max-w-md lg:max-w-xl leading-relaxed font-medium"
+            >
+              From subtle enhancements to full reconstructions, we <br className="hidden lg:block" /> 
+              specialize in restoring healthy smiles with care that fits you.
+            </motion.p>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col gap-3 md:gap-4 w-full"
+          >
+            <Button 
+              className="w-full lg:w-fit origin-left !py-3 lg:!py-1.5" 
+              icon={<HiArrowUpRight className="text-xl lg:text-base bg-transparent" />}
+            >
+              Book Online
+            </Button>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="flex items-center gap-4 md:gap-6 lg:bg-black/30 lg:backdrop-blur-md lg:border lg:border-white/10 p-0 lg:p-3 lg:pl-4 rounded-2xl lg:rounded-[40px] w-full lg:w-fit mt-2 md:mt-2 lg:mt-4"
+            >
+              {/* Overlapping Avatars */}
+              <div className="flex -space-x-3 shrink-0">
+                {avatars.map((url, i) => (
+                  <div key={i} className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-white overflow-hidden shadow-lg">
+                    <img src={url} alt="Patient" className="w-full h-full object-cover" />
+                  </div>
+                ))}
+              </div>
+
+              {/* Rating Details */}
+              <div className="flex flex-col pr-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-white font-bold text-base md:text-lg">4.8</span>
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <HiStar key={i} className="text-white text-base md:text-lg" />
+                    ))}
+                  </div>
+                </div>
+                <div className="flex items-center gap-1 text-white/70 text-xs md:text-sm font-medium">
+                  168 Reviews on 
+                  <span className="text-white font-bold flex items-center gap-0.5">
+                    Google
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

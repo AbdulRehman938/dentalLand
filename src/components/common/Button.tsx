@@ -25,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({
       whileHover="hover"
       onClick={onClick}
       style={{ backgroundColor: variant === 'primary' ? '#5B7A12' : 'transparent' }}
-      className={`relative overflow-hidden px-6 py-2.5 rounded-full flex items-center gap-3 font-bold text-base transition-all duration-500 border border-transparent group ${className}`}
+      className={`relative overflow-hidden px-6 py-1.5 rounded-full flex items-center justify-between gap-3 font-bold text-base transition-all duration-500 border border-transparent group shadow-md shadow-black/10 ${className}`}
       variants={{
         initial: { borderColor: "transparent" },
         hover: { borderColor: variant === 'primary' ? "#5B7A12" : "transparent" }
@@ -35,7 +35,7 @@ const Button: React.FC<ButtonProps> = ({
       {showWave && variant === 'primary' && (
         <motion.div
           variants={{
-            initial: { y: "150%" },
+            initial: { y: "170%" },
             hover: { y: "0%" }
           }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -71,16 +71,14 @@ const Button: React.FC<ButtonProps> = ({
         <motion.div 
           variants={{
             initial: { 
-              backgroundColor: variant === 'primary' ? "rgba(255, 255, 255, 0.2)" : "transparent",
               color: variant === 'primary' ? "#FFFFFF" : "inherit" 
             },
             hover: { 
-              backgroundColor: variant === 'primary' ? "rgba(91, 122, 18, 0.1)" : "transparent",
               color: variant === 'primary' ? "#5B7A12" : "inherit" 
             }
           }}
           transition={{ duration: 0.3 }}
-          className="relative z-10 p-1.5 rounded-full flex items-center justify-center"
+          className="relative z-10 flex items-center justify-center"
         >
           {icon}
         </motion.div>

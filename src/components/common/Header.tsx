@@ -66,8 +66,8 @@ const Header = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-            <span className="text-[22px] font-logo font-extrabold text-brand-black tracking-[-0.03em] leading-none uppercase">
-              Dental Land
+            <span className="text-[22px] font-logo font-extrabold text-brand-black leading-none uppercase">
+              Dental <span style={{ color: "#5B7A12" }}>Land</span>
             </span>
           </div>
 
@@ -149,7 +149,7 @@ const Header = () => {
               exit={{ y: "-100%", opacity: 0 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               style={{ backgroundColor: "#5B7A12" }}
-              className="fixed inset-x-2 top-4 z-[60] lg:hidden rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+              className="fixed inset-x-2 top-4 z-[60] lg:hidden rounded-2xl overflow-y-auto max-h-[calc(100vh-32px)] shadow-2xl flex flex-col no-scrollbar"
             >
               {/* Top Row: Logo & Close Button */}
               <div className="flex items-center justify-between px-4 py-6">
