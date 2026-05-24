@@ -172,7 +172,7 @@ const Team = () => {
           {canScrollLeft && (
             <button
               onClick={scrollLeft}
-              className="absolute top-[35%] left-4 w-10 h-10 bg-black/15 hover:bg-black/30 text-white rounded-full flex items-center justify-center backdrop-blur-md transition-colors z-10 hidden md:flex"
+              className="absolute top-[35%] left-4 w-10 h-10 bg-black/15 hover:bg-black/30 text-white rounded-full items-center justify-center backdrop-blur-md transition-colors z-10 hidden md:flex"
             >
               <HiArrowLeft className="text-lg" />
             </button>
@@ -182,7 +182,7 @@ const Team = () => {
           {canScrollRight && (
             <button
               onClick={scrollRight}
-              className="absolute top-[35%] right-4 w-10 h-10 bg-black/15 hover:bg-black/30 text-white rounded-full flex items-center justify-center backdrop-blur-md transition-colors z-10 hidden md:flex"
+              className="absolute top-[35%] right-4 w-10 h-10 bg-black/15 hover:bg-black/30 text-white rounded-full items-center justify-center backdrop-blur-md transition-colors z-10 hidden md:flex"
             >
               <HiArrowRight className="text-lg" />
             </button>
@@ -200,7 +200,7 @@ const Team = () => {
             icon={<HiArrowUpRight className="text-lg" />}
             variant="primary"
             showWave={true}
-            className="py-4 md:py-0"
+            className="py-4 md:py-5"
           >
             Our Specialists
           </Button>

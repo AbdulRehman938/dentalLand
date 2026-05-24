@@ -113,7 +113,7 @@ const CaseStudies = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, margin: "0px 0px -100px 0px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="w-full min-h-[80vh] bg-white rounded-[32px] flex flex-col pt-14 pb-12 px-6 md:px-12 lg:px-20 shadow-[0_10px_50px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden"
+        className="w-full min-h-[100vh] bg-white rounded-[32px] flex flex-col pt-14 pb-12 px-6 md:px-12 lg:px-20 shadow-[0_10px_50px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden"
       >
         <div className="flex flex-col items-center justify-center mb-16 w-full text-center">
           {/* Pill Label */}

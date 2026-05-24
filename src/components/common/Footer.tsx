@@ -11,18 +11,23 @@ import {
   PiClock,
 } from "react-icons/pi";
 import { HiArrowUpRight } from "react-icons/hi2";
+import { useNavigation } from "../../hooks/useNavigation";
+import type { Screen } from "../../hooks/useNavigation";
 
 const FooterLink = ({
   children,
   href = "#",
   centered = false,
+  onClick,
 }: {
   children: React.ReactNode;
   href?: string;
   centered?: boolean;
+  onClick?: (e: React.MouseEvent) => void;
 }) => (
   <motion.a
     href={href}
+    onClick={onClick}
     initial="initial"
     whileHover="hover"
     className={`flex items-center gap-2 text-brand-black font-medium text-[15px] group cursor-pointer w-fit ${centered ? "mx-auto md:mx-0" : ""}`}
@@ -49,6 +54,8 @@ const FooterLink = ({
 );
 
 const Footer = () => {
+  const { navigate } = useNavigation();
+
   const socialLinks = [
     { icon: FaFacebookF, href: "#" },
     { icon: FaInstagram, href: "#" },
@@ -64,14 +71,12 @@ const Footer = () => {
     "Dental Hygiene",
   ];
 
-  const quickLinks = [
-    "Home",
-    "Services",
-    "Our Clinic",
-    "Dentists",
-    "Dental News",
-    "Contact Us",
-    "Privacy Policy",
+  const quickLinks: { name: string; screen?: Screen }[] = [
+    { name: "Home", screen: "home" },
+    { name: "Services", screen: "services" },
+    { name: "Our Clinic", screen: "clinic" },
+    { name: "Dentists", screen: "dentists" },
+    { name: "Dental News", screen: "news" },
   ];
 
   const contactInfo = [
@@ -103,7 +108,10 @@ const Footer = () => {
           {/* Column 1: Brand & Socials */}
           <div className="flex flex-col items-start text-left min-h-[160px] md:min-h-[200px]">
             {/* Logo */}
-            <div className="flex items-center gap-1 cursor-pointer">
+            <div 
+              onClick={() => navigate("home")}
+              className="flex items-center gap-1 cursor-pointer"
+            >
               <div className="relative w-8 h-8">
                 <img
                   src="/logo-default.png"
@@ -174,7 +182,15 @@ const Footer = () => {
               <ul className="flex flex-col gap-4">
                 {services.map((item, i) => (
                   <li key={i}>
-                    <FooterLink href="#">{item}</FooterLink>
+                    <FooterLink 
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigate("services");
+                      }}
+                    >
+                      {item}
+                    </FooterLink>
                   </li>
                 ))}
               </ul>
@@ -188,7 +204,15 @@ const Footer = () => {
               <ul className="flex flex-col gap-4">
                 {quickLinks.map((item, i) => (
                   <li key={i}>
-                    <FooterLink href="#">{item}</FooterLink>
+                    <FooterLink 
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (item.screen) navigate(item.screen);
+                      }}
+                    >
+                      {item.name}
+                    </FooterLink>
                   </li>
                 ))}
               </ul>
