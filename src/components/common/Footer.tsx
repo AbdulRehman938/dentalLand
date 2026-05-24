@@ -11,8 +11,7 @@ import {
   PiClock,
 } from "react-icons/pi";
 import { HiArrowUpRight } from "react-icons/hi2";
-import { useNavigation } from "../../hooks/useNavigation";
-import type { Screen } from "../../hooks/useNavigation";
+import { useNavigate } from "react-router-dom";
 
 const FooterLink = ({
   children,
@@ -54,7 +53,7 @@ const FooterLink = ({
 );
 
 const Footer = () => {
-  const { navigate } = useNavigation();
+  const navigate = useNavigate();
 
   const socialLinks = [
     { icon: FaFacebookF, href: "#" },
@@ -71,12 +70,12 @@ const Footer = () => {
     "Dental Hygiene",
   ];
 
-  const quickLinks: { name: string; screen?: Screen }[] = [
-    { name: "Home", screen: "home" },
-    { name: "Services", screen: "services" },
-    { name: "Our Clinic", screen: "clinic" },
-    { name: "Dentists", screen: "dentists" },
-    { name: "Dental News", screen: "news" },
+  const quickLinks = [
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: "Our Clinic", path: "/clinic" },
+    { name: "Dentists", path: "/dentists" },
+    { name: "Dental News", path: "/news" },
   ];
 
   const contactInfo = [
@@ -109,7 +108,7 @@ const Footer = () => {
           <div className="flex flex-col items-start text-left min-h-[160px] md:min-h-[200px]">
             {/* Logo */}
             <div 
-              onClick={() => navigate("home")}
+              onClick={() => navigate("/")}
               className="flex items-center gap-1 cursor-pointer"
             >
               <div className="relative w-8 h-8">
@@ -186,7 +185,7 @@ const Footer = () => {
                       href="#"
                       onClick={(e) => {
                         e.preventDefault();
-                        navigate("services");
+                        navigate("/services");
                       }}
                     >
                       {item}
@@ -205,10 +204,10 @@ const Footer = () => {
                 {quickLinks.map((item, i) => (
                   <li key={i}>
                     <FooterLink 
-                      href="#"
+                      href={item.path}
                       onClick={(e) => {
                         e.preventDefault();
-                        if (item.screen) navigate(item.screen);
+                        if (item.path) navigate(item.path);
                       }}
                     >
                       {item.name}

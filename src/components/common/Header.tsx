@@ -6,8 +6,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { HiPlus, HiArrowRight, HiXMark } from "react-icons/hi2";
-import { useNavigation } from "../../hooks/useNavigation";
-import type { Screen } from "../../hooks/useNavigation";
+import { useNavigate, useLocation } from "react-router-dom";
 import Button from "./Button";
 
 const Header = () => {
@@ -16,7 +15,10 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollY } = useScroll();
   const lastScrollY = useRef(0);
-  const { currentScreen, navigate } = useNavigation();
+  
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const direction = latest > lastScrollY.current ? "down" : "up";
@@ -28,12 +30,12 @@ const Header = () => {
     lastScrollY.current = latest;
   });
 
-  const navLinks: { name: string; screen: Screen }[] = [
-    { name: "Home", screen: "home" },
-    { name: "Services", screen: "services" },
-    { name: "Our Clinic", screen: "clinic" },
-    { name: "Dentists", screen: "dentists" },
-    { name: "News", screen: "news" },
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: "Our Clinic", path: "/clinic" },
+    { name: "Dentists", path: "/dentists" },
+    { name: "News", path: "/news" },
   ];
 
   // Disable scroll when menu is open
@@ -62,7 +64,7 @@ const Header = () => {
         <nav className="flex items-center justify-between bg-white rounded-2xl pl-3 lg:px-5 md:pl-10 md:pr-2.5 py-3 shadow-[0_10px_20px_rgb(0,0,0,0.09)] border border-gray-100">
           {/* Logo */}
           <div 
-            onClick={() => navigate("home")}
+            onClick={() => navigate("/")}
             className="flex items-center gap-1 cursor-pointer py-1 animate-fade-in"
           >
             <div className="relative w-8 h-8">
@@ -83,10 +85,10 @@ const Header = () => {
               {navLinks.map((link) => (
                 <a
                   key={link.name}
-                  href="#"
+                  href={link.path}
                   onClick={(e) => {
                     e.preventDefault();
-                    navigate(link.screen);
+                    navigate(link.path);
                   }}
                   onMouseEnter={() => setHoveredLink(link.name)}
                   onMouseLeave={() => setHoveredLink(null)}
@@ -94,13 +96,13 @@ const Header = () => {
                 >
                   <span
                     style={{
-                      color: (hoveredLink === link.name || currentScreen === link.screen) ? "#5B7A12" : "#000000",
+                      color: (hoveredLink === link.name || currentPath === link.path) ? "#5B7A12" : "#000000",
                     }}
                     className="transition-colors duration-300 font-semibold"
                   >
                     {link.name}
                   </span>
-                  {(hoveredLink === link.name || currentScreen === link.screen) && (
+                  {(hoveredLink === link.name || currentPath === link.path) && (
                     <motion.div
                       layoutId="nav-slider"
                       style={{ backgroundColor: "#5B7A12" }}
@@ -118,7 +120,7 @@ const Header = () => {
               ))}
             </div>
 
-            <Button>Book Online</Button>
+            <Button onClick={() => navigate('/contact')}>Book Online</Button>
           </div>
 
           {/* Hamburger Menu Button */}
@@ -166,7 +168,7 @@ const Header = () => {
                 <div 
                   onClick={() => {
                     setIsMenuOpen(false);
-                    navigate("home");
+                    navigate("/");
                   }}
                   className="flex items-center gap-1 cursor-pointer"
                 >
@@ -190,7 +192,13 @@ const Header = () => {
               </div>
 
               {/* Book Online Row (White Block) */}
-              <div className="bg-white flex items-center justify-between px-4 py-6">
+              <div 
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  navigate('/contact');
+                }}
+                className="bg-white flex items-center justify-between px-4 py-6 cursor-pointer"
+              >
                 <span className="text-[22px] font-bold text-[#5B7A12]">
                   Book Online
                 </span>
@@ -202,13 +210,13 @@ const Header = () => {
                 {navLinks.map((link) => (
                   <a
                     key={link.name}
-                    href="#"
+                    href={link.path}
                     onClick={(e) => {
                       e.preventDefault();
                       setIsMenuOpen(false);
-                      navigate(link.screen);
+                      navigate(link.path);
                     }}
-                    className={`flex items-center justify-between px-4 py-6 border-b border-white/10 hover:bg-white/5 transition-colors group ${currentScreen === link.screen ? "bg-white/10" : ""}`}
+                    className={`flex items-center justify-between px-4 py-6 border-b border-white/10 hover:bg-white/5 transition-colors group ${currentPath === link.path ? "bg-white/10" : ""}`}
                   >
                     <span className="text-[20px] font-bold text-white">
                       {link.name}
