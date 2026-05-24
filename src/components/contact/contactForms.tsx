@@ -505,7 +505,7 @@ const ContactForms = () => {
       setIsSubmitting(true);
       setSubmitStatus(null);
       try {
-        const response = await fetch('https://dental-land.vercel.app/api/send-email', {
+        const response = await fetch('/api/send-email', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(values),
@@ -678,7 +678,6 @@ const ContactForms = () => {
                 className={`relative w-5 h-5 flex-shrink-0 rounded-full border-2 cursor-pointer flex items-center justify-center transition-all duration-300 ${formik.values.privacy ? 'bg-[#5B7A12] border-[#5B7A12]' : 'border-gray-300 bg-white'} ${formik.errors.privacy && formik.touched.privacy ? 'border-red-500' : ''}`}
                 onClick={() => {
                   formik.setFieldValue('privacy', !formik.values.privacy);
-                  formik.setFieldTouched('privacy', true);
                 }}
               >
                 <AnimatePresence>
@@ -695,7 +694,6 @@ const ContactForms = () => {
               </div>
               <label className="text-gray-400 text-sm cursor-pointer select-none" onClick={() => {
                   formik.setFieldValue('privacy', !formik.values.privacy);
-                  formik.setFieldTouched('privacy', true);
               }}>
                 I agree to the <a href="#" onClick={(e) => e.stopPropagation()} className="text-[#5B7A12] font-medium underline underline-offset-2 hover:text-[#4a630e] transition-colors">Privacy Policy</a> and agree to be contacted by Dental Land
               </label>
